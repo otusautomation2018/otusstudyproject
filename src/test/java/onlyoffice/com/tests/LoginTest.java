@@ -1,15 +1,13 @@
 package onlyoffice.com.tests;
 
+import onlyoffice.com.steps.LoginStep;
 import org.testng.annotations.Test;
-
-import static onlyoffice.com.pages.MainPage.enterToMainPage;
 
 public class LoginTest extends BaseTest {
 
     @Test
     public void loginTest(){
-        enterToMainPage()
-                .clickOnLoginButton()
-                .loginAs("enter@your.email", "password");
+        LoginStep loginStep = new LoginStep();
+        loginStep.login("enter@your.email", "password");
     }
 }

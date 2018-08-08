@@ -11,17 +11,17 @@ public class LoginPage {
     private LoginFormBlock loginFormBlock;
 
     public LoginPage fillEmailInput(String data) {
-        $(loginFormBlock.EMAIL_INPUT).setValue(data);
+        $(loginFormBlock.EMAIL_INPUT_CSS).setValue(data);
         return this;
     }
 
     public LoginPage fillPasswordInput(String data) {
-        $(loginFormBlock.PASSWORD_INPUT).setValue(data);
+        $(loginFormBlock.PASSWORD_INPUT_CSS).setValue(data);
         return this;
     }
 
     public HomePage clickLoginBtn() {
-        $x(loginFormBlock.LOGIN_BTN).click();
+        $x(loginFormBlock.LOGIN_BTN_XPATH).click();
         return page(HomePage.class);
     }
 

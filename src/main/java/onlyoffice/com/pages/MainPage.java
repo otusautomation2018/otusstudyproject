@@ -10,13 +10,15 @@ public class MainPage {
 
     private HeaderBlock headerBlock;
 
+    public static final String MAIN_PAGE_URL = "https://www.onlyoffice.com/";
+
     public static MainPage enterToMainPage(){
-        open("http://www.onlyoffice.com/");
+        open(MAIN_PAGE_URL);
         return page(MainPage.class);
     }
 
     public LoginPage clickOnLoginButton(){
-        $x(headerBlock.LOGIN_BTN).click();
+        $x(headerBlock.LOGIN_BTN_XPATH).click();
         return page(LoginPage.class);
     }
 }
