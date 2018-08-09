@@ -1,5 +1,6 @@
 package onlyoffice.com.pages;
 
+import io.qameta.allure.Step;
 import onlyoffice.com.pages.components.loginPage.LoginFormBlock;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -10,11 +11,13 @@ public class LoginPage {
 
     private LoginFormBlock loginFormBlock;
 
+    @Step
     public LoginPage fillEmailInput(String data) {
         $(loginFormBlock.EMAIL_INPUT_CSS).setValue(data);
         return this;
     }
 
+    @Step
     public LoginPage fillPasswordInput(String data) {
         $(loginFormBlock.PASSWORD_INPUT_CSS).setValue(data);
         return this;
