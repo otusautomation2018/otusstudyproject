@@ -1,17 +1,24 @@
 package onlyoffice.com.steps;
 
+import io.qameta.allure.Step;
+import onlyoffice.com.data.CommonForTheSiteData;
+import onlyoffice.com.data.PagesRouting;
 import onlyoffice.com.entities.User;
-import onlyoffice.com.pages.LoginPage;
+import onlyoffice.com.site.pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class LoginStep {
+public class NavigationSteps {
 
-    public static final String LOGIN_PAGE_URL = "https://www.onlyoffice.com/ru/signin.aspx";
-
-    public void login(User user) {
-        open(LOGIN_PAGE_URL);
+    @Step
+    public static void login(User user) {
+        open(PagesRouting.LOGIN_PAGE_URL);
         LoginPage loginPage = new LoginPage();
         loginPage.loginAs(user.email, user.password);
+    }
+
+    @Step
+    public static void loginWithValidCredentials(){
+        login(User.createFromFile(CommonForTheSiteData.PATH_TO_USER_DATA_FILE));
     }
 }

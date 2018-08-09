@@ -19,6 +19,9 @@
         <allure.maven.version>2.9</allure.maven.version>
         <maven.surefire.plugin.version>2.21.0</maven.surefire.plugin.version>
         <maven.compiler.plugin.version>1.8</maven.compiler.plugin.version>
+        <jackson.version>2.9.5</jackson.version>
+        <javax.xml.bind.version>2.3.0</javax.xml.bind.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <browser></browser>
         <suite></suite>
         <display></display>
@@ -34,7 +37,7 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
+            <version>${javax.xml.bind.version}</version>
         </dependency>
 
         <dependency>
@@ -53,14 +56,20 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.25</version>
-            <scope>test</scope>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+
+        <!--Jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 

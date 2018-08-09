@@ -1,4 +1,4 @@
-package onlyoffice.com.pages.components.homePage;
+package onlyoffice.com.site.components;
 
 public class HeaderBlock {
 

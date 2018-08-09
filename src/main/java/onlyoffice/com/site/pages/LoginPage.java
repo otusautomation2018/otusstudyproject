@@ -1,37 +1,41 @@
-package onlyoffice.com.pages;
+package onlyoffice.com.site.pages;
 
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
-import onlyoffice.com.pages.components.loginPage.LoginFormBlock;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.page;
 
 public class LoginPage {
 
-    private LoginFormBlock loginFormBlock;
+    /* Login form block */
+    public static final String EMAIL_INPUT_CSS = "#txtSignInEmail";
+    public static final String PASSWORD_INPUT_CSS = "#txtSignPassword";
+    public static final String LOGIN_BTN_XPATH = "//input[@type='button' and @onclick]";
 
     @Step
     public LoginPage fillEmailInput(String data) {
-        $(loginFormBlock.EMAIL_INPUT_CSS).setValue(data);
+        $(EMAIL_INPUT_CSS).setValue(data);
         return this;
     }
 
     @Step
     public LoginPage fillPasswordInput(String data) {
-        $(loginFormBlock.PASSWORD_INPUT_CSS).setValue(data);
+        $(PASSWORD_INPUT_CSS).setValue(data);
         return this;
     }
 
+    @Step
     public HomePage clickLoginBtn() {
-        $x(loginFormBlock.LOGIN_BTN_XPATH).click();
-        return page(HomePage.class);
+        $x(LOGIN_BTN_XPATH).click();
+        return Selenide.page(HomePage.class);
     }
 
+    @Step
     public HomePage loginAs(String email, String password) {
         this.fillEmailInput(email);
         this.fillPasswordInput(password);
         this.clickLoginBtn();
-        return page(HomePage.class);
+        return Selenide.page(HomePage.class);
     }
 }

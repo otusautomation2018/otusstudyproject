@@ -6,3 +6,4 @@ target/
 .logs/
 *.xlsx
 src/main/resources/users/admin.json
+allure-results/
