@@ -5,3 +5,5 @@ target/
 *.exe
 .logs/
 *.xlsx
+src/main/resources/users/admin.json
+allure-results/
