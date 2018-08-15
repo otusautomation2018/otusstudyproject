@@ -24,14 +24,14 @@ public class TaskPannelBlock {
 
 
     @Step
-    public static TaskPannelBlock fillTaskFields(){
+    public static String fillTaskFields(){
         Task myTask = new Task();
         myTask.testDataTask();
         $x(TASK_NAME_INPUT_XPATH).setValue(myTask.taskName);
         $x(DESCRIPTION_INPUT_XPATH).setValue(myTask.taskDescription);
         $(START_DATE_INPUT_CSS).setValue(myTask.startDate);
         $(END_DATE_INPUT_CSS).setValue(myTask.endDate);
-        return page(TaskPannelBlock.class);
+        return myTask.taskName;
     }
 
     @Step

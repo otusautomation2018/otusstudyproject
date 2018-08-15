@@ -3,7 +3,6 @@ package onlyoffice.com.site.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
-import onlyoffice.com.entities.Task;
 import onlyoffice.com.site.components.TaskPannelBlock;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -11,6 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class ProjectsPage {
 
     private TaskPannelBlock taskPannelBlock;
+    private static String expectedTaskName;
 
     private static final String PROJECTS_DROPDOWN_XPATH = "//a[@class='product-cur-link']";
     private static final String FILTER_XPATH = "//input[contains(@class,'advansed-filter')]";
@@ -36,7 +36,7 @@ public class ProjectsPage {
 
     @Step
     public static ProjectsPage createNewTask(){
-        TaskPannelBlock.fillTaskFields();
+        expectedTaskName = TaskPannelBlock.fillTaskFields();
         TaskPannelBlock.chooseProject();
         TaskPannelBlock.submitNewTask();
         return page(ProjectsPage.class);
@@ -44,13 +44,13 @@ public class ProjectsPage {
 
     @Step
     public static boolean taskWasCreated(){
+        $(CREATE_TASK_PANNEL_CSS).shouldBe(Condition.disappear);
         ElementsCollection allTasks = $$x(ALL_TASK_NAMES_XPATH);
-        Task task = new Task();
-        System.out.println(task.getTaskName());
+        System.out.println(expectedTaskName);
         for (int i = 0; i < allTasks.size(); i++) {
             String taskName = allTasks.get(i).innerText();
             System.out.println(taskName);
-            if (taskName == task.getTaskName()) {
+            if (taskName.equals(expectedTaskName)) {
                 return true;
             }
         }
